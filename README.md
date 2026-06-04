@@ -4,8 +4,7 @@ A high-fidelity, animated student learning dashboard built with Next.js 14 App R
 
 ## Live Demo
 
-> Deployed on Vercel: _[add link after deployment]_
-
+> Deployed on Vercel: (https://andaz-kumar-eight.vercel.app/dashboard)
 ---
 
 ## Tech Stack
