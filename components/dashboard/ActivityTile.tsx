@@ -1,9 +1,10 @@
 "use client";
 
-import { useMemo } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Activity } from "lucide-react";
 import { generateActivityData } from "@/lib/utils";
+import type { ActivityDay } from "@/types";
 import { BentoCard } from "@/components/ui/BentoCard";
 
 const LEVEL_COLORS = [
@@ -15,7 +16,11 @@ const LEVEL_COLORS = [
 ];
 
 export function ActivityTile() {
-  const activityData = useMemo(() => generateActivityData(), []);
+  // Generate on client only to avoid SSR/client Math.random() mismatch
+  const [activityData, setActivityData] = useState<ActivityDay[]>([]);
+  useEffect(() => {
+    setActivityData(generateActivityData());
+  }, []);
 
   const totalContributions = activityData.reduce((acc, d) => acc + d.count, 0);
   const activedays = activityData.filter((d) => d.count > 0).length;

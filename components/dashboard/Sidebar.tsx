@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import type { Route } from "next";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -68,7 +69,7 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
           return (
             <li key={item.id}>
               <Link
-                href={item.href}
+                href={item.href as Route}
                 className={cn(
                   "relative flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors duration-150 group",
                   isActive ? "text-white" : "text-slate-400 hover:text-slate-200"

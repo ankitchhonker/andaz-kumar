@@ -1,5 +1,5 @@
 "use client";
-
+import type { Route } from "next";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
@@ -30,7 +30,7 @@ export function MobileNav() {
           return (
             <li key={item.id}>
               <Link
-                href={item.href}
+                href={item.href as Route}
                 className="relative flex flex-col items-center gap-1 px-3 py-1.5"
               >
                 {isActive && (

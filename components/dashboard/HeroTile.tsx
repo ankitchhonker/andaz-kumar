@@ -1,12 +1,17 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Sparkles, ArrowRight } from "lucide-react";
 import { getGreeting } from "@/lib/utils";
 import { BentoCard } from "@/components/ui/BentoCard";
 
 export function HeroTile() {
-  const greeting = getGreeting();
+  // Use a stable default for SSR; update on client to avoid hydration mismatch
+  const [greeting, setGreeting] = useState("Welcome back");
+  useEffect(() => {
+    setGreeting(getGreeting());
+  }, []);
 
   return (
     <BentoCard className="relative min-h-[200px] overflow-hidden group" glowColor="cyan">
